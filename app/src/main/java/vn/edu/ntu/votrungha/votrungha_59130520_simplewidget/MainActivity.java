@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void thucThi()
     {
-        String Result;
+        String Result="";
         Result = edtTen.getText()+"\n"+
                 "Ngày Sinh: "+ edtNs.getText()+"\n";
         switch (checkRdo.getCheckedRadioButtonId())
@@ -59,13 +61,24 @@ public class MainActivity extends AppCompatActivity {
             case R.id.rdNam: Result+="Giới Tính: "+"Nam"+"\n" +  "Sở Thích: ";break;
             case R.id.rdNu:  Result+="Giới Tính: "+"Nữ"+"\n"+ "Sở Thích: ";  break;
         }
-        if(cbCf.isChecked()) Result+=cbCf.getText()+"; ";
-        if(cbNa.isChecked())   Result+=cbNa.getText()+"; ";
-        if(cbNn.isChecked()) Result+=cbNn.getText()+"; ";
-        if(cbOn.isChecked())  Result+=cbOn.getText()+"; ";
-        if(cbXp.isChecked()) Result+=cbXp.getText()+"; ";
+        // gọi hàm thực thi checkbox vào sự kiên
+        Result+=CheckBoxAction();
+         Toast.makeText(MainActivity.this,Result,Toast.LENGTH_SHORT).show();
+    }
+    private String CheckBoxAction()
+    {
+        String Result="";
+        CheckBox [] arrCb=new CheckBox[]{cbXp,cbNn,cbCf,cbOn,cbNa};
+        for (int i=0;i<arrCb.length;i++)
+        {
+            if(arrCb[i].isChecked())
+            {
+                Result+=arrCb[i].getText().toString()+"; ";
+            }
+        }
+        // Thêm Sở thích khác vào kết quả nếu có.
         Result+=edtSt.getText();
-        Toast.makeText(MainActivity.this,Result,Toast.LENGTH_SHORT).show();
+        return Result;
     }
 
 }

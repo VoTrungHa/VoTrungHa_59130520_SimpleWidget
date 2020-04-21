@@ -19,7 +19,7 @@
          android:layout_height="wrap_content"
          android:ems="10"
          android:hint="Nhập tên bạn vào đây"
-         android:inputType="text"
+         android:inputType="textPersonName"
          />
 
     <TextView
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nhập Ngày Sinh Vào Đây"
-        android:inputType="text" />
+        android:inputType="date" />
 
     <TextView
         android:id="@+id/textView3"
@@ -116,13 +116,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nhập Sở thích Khác..."
-        android:inputType="text" />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btXn"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="14sp"
         android:text="XÁC NHẬN" />
 
 </LinearLayout>
